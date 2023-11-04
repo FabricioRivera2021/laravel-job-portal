@@ -7,7 +7,7 @@
         <title>Laravel Job Board</title>
     </head>
 
-    <body class="from-10% via-30% to-90% mx-auto mt-10 max-w-2xl bg-gradient-to-r from-indigo-100 via-sky-100 to-emerald-100 text-slate-700">
+    <body class="from-10% via-30% to-90% mx-auto px-4 mt-10 max-w-7xl bg-gradient-to-r from-indigo-100 via-sky-100 to-emerald-100 text-slate-700">
         <nav class="mb-8 flex justify-between text-lg font-semibold">
             <ul class="flex space-x-2">
                 <li><a href="{{ route('jobs.index') }}">Home</a></li>
@@ -19,6 +19,9 @@
                         <a href="{{route('my-job-applications.index')}}">
                             {{ auth()->user()->name ?? 'Guest' }}: Applications
                         </a>
+                    </li>
+                    <li>
+                        <a href="{{route('my-jobs.index')}}">My Jobs</a>
                     </li>
                     <li>
                         <form action="{{ route('auth.destroy') }}" method="POST">
@@ -45,6 +48,21 @@
             </div>
         @endif
 
-        {{ $slot }}
+        @if (session('error'))
+            <div role="alert" 
+                class="mb-8 rounded-md border-l-4 border-red-300 bg-red-100 p-4 text-red-700 opacity-75">
+                <p class="font-bold">
+                    Error!!
+                </p>
+                <p>{{ session('error') }}</p>
+            </div>
+        @endif
+
+        <div class="grid grid-cols-1 gap-4 xl:grid-cols-3 md:grid-cols-2">
+
+            {{ $slot }}
+
+        </div>
+
     </body>
 </html>
