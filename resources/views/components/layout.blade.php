@@ -7,7 +7,7 @@
         <title>Laravel Job Board</title>
     </head>
 
-    <body class="from-10% via-30% to-90% mx-auto px-4 mt-10 max-w-7xl bg-gradient-to-r from-indigo-100 via-sky-100 to-emerald-100 text-slate-700">
+    <body class="from-10% via-30% to-90% mx-auto px-4 mt-10 max-w-4xl bg-gradient-to-r from-indigo-100 via-sky-100 to-emerald-100 text-slate-700">
         <nav class="mb-8 flex justify-between text-lg font-semibold">
             <ul class="flex space-x-2">
                 <li><a href="{{ route('jobs.index') }}">Home</a></li>
@@ -58,7 +58,7 @@
             </div>
         @endif
 
-        <div class="grid grid-cols-1 gap-4 xl:grid-cols-3 md:grid-cols-2">
+        <div >
 
             {{ $slot }}
 

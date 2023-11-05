@@ -39,7 +39,10 @@
     @foreach ($jobs as $job)
         <x-job-card class="mb-4" :job="$job">
             {{-- Lista de jobs, osea job-card --}}
-            <div class="flex justify-between items-center">
+            <div class="flex flex-col justify-between items-start">
+                <p class=" rounded-sm border border-slate-200 px-2 py-5 mb-6 text-sm text-slate-500">
+                    {!! nl2br(e($job->description)) !!}
+                </p>
                 <x-link-button :href="route('jobs.show', $job)">
                     Show
                 </x-link-button>
