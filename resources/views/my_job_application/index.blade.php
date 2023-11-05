@@ -9,21 +9,23 @@
                         Applied - {{ $application->created_at->diffForHumans() }}
                     </div>
                     <div>
-                        Your asking salary: ${{number_format($application->expected_salary)}}
-                    </div>
-                </div>
-                <div class="text-right">
-                    <div>
                         Other {{ Str::plural('applicant', $application->job->job_applications_count - 1) }} {{ $application->job->job_applications_count - 1 }}
+                    </div>
+                    <div>
+                        Your asking salary: ${{number_format($application->expected_salary)}}
                     </div>
                     <div>
                         Average asking salary: ${{number_format($application->job->job_applications_avg_expected_salary)}}
                     </div>
+                </div>
+                <div class="text-right">
                     <div>
                         <form action="{{route('my-job-applications.destroy', $application)}}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <x-button class="mt-4 hover:bg-red-400 hover:text-white text-slate-600">Cancel application</x-button>
+                            @if (!$application->job->deleted_at)
+                                <x-button class="mt-4 hover:bg-red-400 hover:text-white text-slate-600">Cancel application</x-button>
+                            @endif
                         </form>
                     </div>
                 </div>

@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('job_applications', function (Blueprint $table) {
             $table->id();
-
             $table->foreignIdFor(\App\Models\User::class)->constrained();
-            $table->foreignIdFor(\App\Models\Job::class)->constrained();
-            $table->unsignedInteger('expected_salary');
+            
+            $table->foreignIdFor(\App\Models\Job::class)->constrained(); 
+            // ->onDelete('cascade'); 
+                    //this is for that we delete a jobOffer that might have applications already sended,
+                    // those will be deleted first, so that we dont have data floating in the air
 
+            $table->unsignedInteger('expected_salary');
             $table->timestamps();
         });
     }
